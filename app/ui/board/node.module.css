@@ -1,10 +1,7 @@
-:root {
+.node {
   --top: 50px;
   --left: 60px;
   --cursor: grab;
-}
-
-.node {
   height: 252.53px;
   width: 185px;
   background-color: white;

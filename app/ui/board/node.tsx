@@ -14,7 +14,7 @@ export default function Node() {
     }
   }
 
-  function dragEnd(e: MouseEvent) {
+  function dragEnd() {
     if (nodeRef.current) {
       nodeRef.current.style.setProperty('--cursor', 'grab');
     }
