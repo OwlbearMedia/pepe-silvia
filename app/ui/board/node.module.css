@@ -1,0 +1,16 @@
+:root {
+  --top: 50px;
+  --left: 60px;
+  --cursor: grab;
+}
+
+.node {
+  height: 252.53px;
+  width: 185px;
+  background-color: white;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  cursor: var(--cursor);
+  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.2), 6px 6px 6px 0px rgba(0,0,0,0.1);
+}
