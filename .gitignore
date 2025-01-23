@@ -4,3 +4,6 @@ api/__pycache__
 .next
 .DS_Store
 .env
+.vercel
+.env
+.env.development.local

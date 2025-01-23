@@ -3,100 +3,61 @@
 import { useRef } from 'react';
 import styles from '@/app/ui/board/node.module.css';
 import Image from 'next/image';
+import type { ConspiracyNode } from '@/app/lib/types';
 
-interface ConspiracyNode {
-  top: number;
-  left: number;
-  title: string;
-  image?: string;
-}
-
-const conspiracyNode: ConspiracyNode[] = [{
-  top: 50,
-  left: 60,
-  title: 'Pepe',
-  // image: String,
-}, {
-  top: 150,
-  left: 160,
-  title: 'Silvia',
-  // image: String,
-}];
-
-export default function Node() {
-  const nodeRef = useRef<Map<ConspiracyNode, HTMLDivElement | null>>(null);
-  let activeNode: HTMLDivElement | null | undefined;
-
-  function getMap() {
-    if (!nodeRef.current) {
-      // Initialize the Map on first usage.
-      nodeRef.current = new Map();
-    }
-    return nodeRef.current;
-  }
+export default function Node({ node }: { node: ConspiracyNode }) {
+  const nodeRef = useRef<HTMLDivElement | null>(null);
 
   function elementDrag(e: MouseEvent) {
     e.preventDefault();
-    if (activeNode) {
-      activeNode.style.setProperty('--top', `${activeNode.offsetTop + e.movementY}px`)
-      activeNode.style.setProperty('--left', `${activeNode.offsetLeft + e.movementX}px`)
+    if (nodeRef.current) {
+      nodeRef.current.style.setProperty('--top', `${nodeRef.current.offsetTop + e.movementY}px`)
+      nodeRef.current.style.setProperty('--left', `${nodeRef.current.offsetLeft + e.movementX}px`)
     }
   }
-
-  
 
   function dragEnd() {
-    if (activeNode) {
-      activeNode.style.setProperty('--cursor', 'grab');
-      activeNode.removeEventListener('mousemove', elementDrag);
-      activeNode.removeEventListener('mouseup', dragEnd);
-    }
-    
-  }
-
-  function click(node: ConspiracyNode) {
-    const map = getMap();
-    activeNode = map?.get(node);
-    if (activeNode) {
-      activeNode.style.setProperty('--cursor', 'grabbing');
-      activeNode.addEventListener('mousemove', elementDrag, false);
-      activeNode.addEventListener('mouseup', dragEnd, false);
+    if (nodeRef.current) {
+      nodeRef.current.style.setProperty('--cursor', 'grab');
+      nodeRef.current.removeEventListener('mousemove', elementDrag);
+      nodeRef.current.removeEventListener('mouseup', dragEnd);
     }
   }
 
-  const nodes = conspiracyNode.map((node: ConspiracyNode, index) => {
-    return (
-      <div
-        key={index}
-        ref={(n) => {
-          const map = getMap();
-          map.set(node, n);
+  function click() {
+    if (nodeRef.current) {
+      nodeRef.current.style.setProperty('--cursor', 'grabbing');
+      nodeRef.current.addEventListener('mousemove', elementDrag, false);
+      nodeRef.current.addEventListener('mouseup', dragEnd, false);
+    }
+  }
 
-          return () => {
-            map.delete(node);
-          };
-        }}
-        style={{
-          top: 'var(--top)',
-          left: 'var(--left)',
-          // '--left': `${node.left}px`,
-          // '--top': `${node.top}px`,
-        }}
-        className={styles.node}
-        onMouseDown={() => click(conspiracyNode[index])}
-      >
-        <div className={styles.header}>
-          <Image
-            src={'/tack.png'}
-            className={styles.tack}
-            width={50}
-            height={50}
-            alt="Tack"
-          />
-        </div>
+  return (
+    <div
+      ref={nodeRef}
+      style={{
+        top: 'var(--top)',
+        left: 'var(--left)',
+        transform: `rotate(${node.tilt}deg)`,
+        // The style interface doesn't have custom properties,
+        // they are valid here though
+        // @ts-expect-error:next-line
+        '--left': `${node.left}px`,
+        '--top': `${node.top}px`,
+      }}
+      className={styles.node}
+      onMouseDown={click}
+    >
+      <div className={styles.header}>
+        <Image
+          src={'/tack.png'}
+          className={styles.tack}
+          width={50}
+          height={50}
+          alt="Tack"
+        />
+        <h2>{node.title}</h2>
       </div>
-    )
-  });
-
-  return (<div>{nodes}</div>);
+    </div>
+  )
 }
