@@ -5,7 +5,7 @@ import { fetchConspiracyNodes } from '@/app/lib/api';
 
 export default async function Page() {
   const conspiracyNodes: ConspiracyNode[] = await fetchConspiracyNodes();
-  const nodes = conspiracyNodes.map((node) => <Node key={node.id} node={node} />);
+  const nodes = conspiracyNodes?.map((node) => <Node key={node.id} node={node} />) || [];
   return (
     <div className={styles.board}>
       {nodes}
