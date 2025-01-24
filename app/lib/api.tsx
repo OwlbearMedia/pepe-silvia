@@ -1,5 +1,7 @@
+import { buildUrl } from "./util";
+
 export async function fetchConspiracyNodes() {
-  const response = await fetch(`${process.env.URL}/api/nodes`, {
+  const response = await fetch(buildUrl('/api/nodes'), {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
