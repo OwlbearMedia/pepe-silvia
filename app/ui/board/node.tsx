@@ -1,12 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import { Shadows_Into_Light } from 'next/font/google';
 import styles from '@/app/ui/board/node.module.css';
 import Image from 'next/image';
 import type { ConspiracyNode } from '@/app/lib/types';
-
-export const shadowsIntoLight = Shadows_Into_Light({ weight: ['400'] });
+import { shadowsIntoLight } from '@/app/ui/fonts';
 
 export default function Node({ node }: { node: ConspiracyNode }) {
   const nodeRef = useRef<HTMLDivElement | null>(null);
