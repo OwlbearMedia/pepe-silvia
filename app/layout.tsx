@@ -62,7 +62,7 @@ export default function RootLayout({
               {/* Sidebar content here */}
               <li className="prose"><h1>Pepe Silvia</h1></li>
               <li><Link href={buildUrl('/')}>Home</Link></li>
-              <li><Link href={buildUrl('board')}>The conspiracy board</Link></li>
+              <li><Link href={buildUrl('/board')}>The conspiracy board</Link></li>
             </ul>
           </div>
         </div>

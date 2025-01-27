@@ -14,7 +14,7 @@ export default function Home() {
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Pepe Silvia</h1>
             <p className="mb-5">
-              Your preimier conspiracy board app.
+              Your premier conspiracy board app.
             </p>
             <p className="mb-5">
               Have you stumbled on a major company conspiracy? Are you seeing a lot of mail for a co-worker only go to their office and find they don&apos;t exist? So you go to Carol in HR only to find out there is no Carol. That in fact, half the employees in the company are made up, that the office is a ghost town?
