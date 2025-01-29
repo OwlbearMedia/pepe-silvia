@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { buildUrl } from "@/app/lib/util";
 
 export default function Home() {
   return (
@@ -24,7 +23,7 @@ export default function Home() {
             </p>
             <Link
               className="btn mr-4"
-              href={buildUrl('/board')}
+              href="/board"
             >
               See a demo
             </Link>

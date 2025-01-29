@@ -1,9 +1,15 @@
+export interface ConspiracyBoard {
+  boardId: string;
+  name: string;
+  user: string;
+  nodes: ConspiracyNode[];
+}
+
 export interface ConspiracyNode {
-  id: number;
-  top: number;
-  left: number;
+  id: string;
+  top: string;
+  left: string;
   title: string;
-  tilt: number;
+  tilt: string;
   image?: string;
-  created_at: string
 }

@@ -1,7 +1,7 @@
 import { buildUrl } from "./util";
 
-export async function fetchConspiracyNodes() {
-  const response = await fetch(buildUrl('/api/nodes'), {
+export async function fetchConspiracyBoard(boardId: number) {
+  const response = await fetch(buildUrl(`/api/board/${boardId}`), {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

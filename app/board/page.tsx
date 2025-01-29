@@ -1,11 +1,11 @@
 import Node from '@/app/ui/board/node';
 import styles from '@/app/ui/board.module.css';
-import type { ConspiracyNode } from '@/app/lib/types'
-import { fetchConspiracyNodes } from '@/app/lib/api';
+import type { ConspiracyBoard } from '@/app/lib/types'
+import { fetchConspiracyBoard } from '@/app/lib/api';
 
 export default async function Page() {
-  const conspiracyNodes: ConspiracyNode[] = await fetchConspiracyNodes();
-  const nodes = conspiracyNodes?.map((node) => <Node key={node.id} node={node} />) || [];
+  const conspiracyBoard: ConspiracyBoard[] = await fetchConspiracyBoard(1);
+  const nodes = conspiracyBoard[0].nodes?.map((node) => <Node key={node.id} node={node} />) || [];
   return (
     <div className={styles.board}>
       {nodes}

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Link from "next/link";
-import { buildUrl } from "@/app/lib/util";
 import '@/app/ui/global.css';
 
 const geistSans = Geist({
@@ -61,8 +60,8 @@ export default function RootLayout({
             <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 z-20">
               {/* Sidebar content here */}
               <li className="prose"><h1>Pepe Silvia</h1></li>
-              <li><Link href={buildUrl('/')}>Home</Link></li>
-              <li><Link href={buildUrl('/board')}>The conspiracy board</Link></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/board">The conspiracy board</Link></li>
             </ul>
           </div>
         </div>
