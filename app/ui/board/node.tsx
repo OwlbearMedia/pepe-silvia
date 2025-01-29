@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import styles from '@/app/ui/board/node.module.css';
 import Image from 'next/image';
 import type { ConspiracyNode } from '@/app/lib/types';
+import { shadowsIntoLight } from '@/app/ui/fonts';
 
 export default function Node({ node }: { node: ConspiracyNode }) {
   const nodeRef = useRef<HTMLDivElement | null>(null);
@@ -32,6 +33,19 @@ export default function Node({ node }: { node: ConspiracyNode }) {
     }
   }
 
+  function NodeImage({ src, title }: { src: string; title: string }) {
+    if (src) {
+      return (
+        <Image
+          src={`${src}`}
+          width={160}
+          height={120}
+          alt={`Image of ${title}`}
+        />
+      );
+    }
+  }
+
   return (
     <div
       ref={nodeRef}
@@ -56,7 +70,15 @@ export default function Node({ node }: { node: ConspiracyNode }) {
           height={50}
           alt="Tack"
         />
-        <h2>{node.title}</h2>
+      </div>
+      <div className='body text-center'>
+        <div className="my-4 flex justify-center">
+          <NodeImage
+            src={`${node.image}`}
+            title={node.title}
+          />
+        </div>
+        <h2 className={`${shadowsIntoLight.className} antialiased text-2xl my-6`}>{node.title}</h2>
       </div>
     </div>
   )
