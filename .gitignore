@@ -1,5 +1,4 @@
 node_modules
-api/__pycache__
 .vscode
 .next
 .DS_Store
