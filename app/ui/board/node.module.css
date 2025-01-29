@@ -21,5 +21,7 @@
   top: -8px;
   left: 0;
   right: 25px;
-  margin-inline: auto; 
+  margin-inline: auto;
+  z-index: auto;
+  opacity: .99;
 }

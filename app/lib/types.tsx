@@ -13,3 +13,15 @@ export interface ConspiracyNode {
   tilt: string;
   image?: string;
 }
+
+export interface ConspiracyLinkSkeleton {
+  id: string;
+  nodeA: ConspiracyNode['id'];
+  nodeB: ConspiracyNode['id'];
+}
+
+export interface ConspiracyLink {
+  id: string;
+  nodeA: ConspiracyNode;
+  nodeB: ConspiracyNode;
+}

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import type { ConspiracyNode } from '@/app/lib/types';
 import { shadowsIntoLight } from '@/app/ui/fonts';
 
-export default function Node({ node }: { node: ConspiracyNode }) {
+export default function ConspiracyNode({ node }: { node: ConspiracyNode }) {
   const nodeRef = useRef<HTMLDivElement | null>(null);
 
   function elementDrag(e: MouseEvent) {
