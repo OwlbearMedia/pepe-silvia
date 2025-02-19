@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import LoginForm from '../ui/LoginForm';
 
@@ -9,7 +10,9 @@ export default function LoginPage() {
           <Link href="/">Pepe Silvia</Link>
         </h2>
       </div>
-      <LoginForm />
+      <Suspense>
+        <LoginForm />
+      </Suspense>
     </div>
   );
 };

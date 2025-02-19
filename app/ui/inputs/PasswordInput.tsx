@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import isLength from 'validator/es/lib/isLength';
 import PasswordIcon from '@/app/ui/icons/PasswordIcon';
 import type { BaseSyntheticEvent } from 'react';
 
@@ -36,7 +37,15 @@ export default function Input({ label, id, placeholder, min, max }: Input) {
   }
 
   function validate(e: BaseSyntheticEvent) {
-    console.log(e)
+    if (min && max) {
+      if (!isLength(e.target.value, { min: parseInt(min, 10), max: parseInt(max, 10) })) {
+        setError(true);
+        setErrorMessage('Please enter password between 6 and 20 characters');
+      } else {
+        setError(false);
+        setErrorMessage('');
+      }
+    }
   }
 
   return (

@@ -1,6 +1,5 @@
 import { create } from 'zustand';
-import { login } from '@/app/lib/api';
-import { z } from 'zod';
+// import { login } from '@/app/lib/api';
 
 interface UserState {
   name: string

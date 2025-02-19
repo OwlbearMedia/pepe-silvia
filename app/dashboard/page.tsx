@@ -1,3 +1,11 @@
+import { useUserStore } from '@/app/state/userStore';
+
 export default function DashboardPage() {
-  return <p>Dashboard Page</p>;
+  const { name } = useUserStore();
+  return(
+    <div>
+      <p>Dashboard Page</p>
+      <p>Hello, {name}</p>
+    </div>
+  );
 }

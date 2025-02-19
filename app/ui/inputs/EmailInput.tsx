@@ -38,6 +38,9 @@ export default function EmailInput({ label, id, placeholder }: Input) {
     if (!isEmail(e.target.value)) {
       setError(true);
       setErrorMessage('Please enter a valid email address');
+    } else {
+      setError(false);
+      setErrorMessage('');
     }
   }
 
