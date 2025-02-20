@@ -20,7 +20,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "aws:token": "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 640550388417.dkr.ecr.us-west-2.amazonaws.com"
   },
   "dependencies": {
     "@vercel/speed-insights": "^1.1.0",

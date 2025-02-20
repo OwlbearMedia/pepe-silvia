@@ -11,14 +11,18 @@ export const useUserStore = create<UserState>()((set) => ({
   name: '',
   email: '',
   login: async ({ email, password }) => {
-    try {
-      const user = await login({ email, password });
-      set({
-        name: user.name,
-        email: user.email,
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    set({
+      email,
+      name: password,
+    });
+    // try {
+    //   const user = await login({ email, password });
+    //   set({
+    //     name: user.name,
+    //     email: user.email,
+    //   });
+    // } catch (error) {
+    //   console.error(error);
+    // }
   },
 }));
