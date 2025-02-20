@@ -27,7 +27,12 @@ export default function Home() {
             >
               See a demo
             </Link>
-            <button className="btn btn-primary">Get Started</button>
+            <Link
+              className="btn btn-primary"
+              href="/login"
+            >
+              Get Started
+            </Link>
           </div>
         </div>
       </div>
