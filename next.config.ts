@@ -1,14 +1,21 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+import { PHASE_DEVELOPMENT_SERVER } from 'next/constants';
 
-const nextConfig: NextConfig = {
-  // rewrites: async () => {
-  //   return [
-  //     {
-  //       source: '/api/:path*',
-  //       destination: 'http://ec2-44-242-150-60.us-west-2.compute.amazonaws.com/api/:path*',
-  //     },
-  //   ]
-  // },
-};
+module.exports = async (phase: string) => {
+  const nextConfig: NextConfig = {
+    /* config options here */
+  }
 
-export default nextConfig;
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    nextConfig.rewrites = async () => {
+      return [
+        {
+          source: '/api/:path*',
+          destination: 'http://localhost:5328/api/:path*',
+        },
+      ]
+    }
+  }
+
+  return nextConfig
+}

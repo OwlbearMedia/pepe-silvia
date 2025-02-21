@@ -1,5 +1,3 @@
-'use client';
-
 import { useRef } from 'react';
 import styles from '@/app/ui/board/node.module.css';
 import Image from 'next/image';

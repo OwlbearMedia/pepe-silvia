@@ -1,11 +1,10 @@
-// import { useUserStore } from '@/app/state/userStore';
+import Greeting from "@/app/ui/dashboard/Greeting";
 
 export default function DashboardPage() {
-  // const { name } = useUserStore();
   return(
     <div>
       <p>Dashboard Page</p>
-      {/* <p>Hello, {name}</p> */}
+      <Greeting />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-// import { login } from '@/app/lib/api';
+import { login } from '@/app/lib/api';
 
 interface UserState {
   name: string
@@ -11,18 +11,14 @@ export const useUserStore = create<UserState>()((set) => ({
   name: '',
   email: '',
   login: async ({ email, password }) => {
-    set({
-      email,
-      name: password,
-    });
-    // try {
-    //   const user = await login({ email, password });
-    //   set({
-    //     name: user.name,
-    //     email: user.email,
-    //   });
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      const user = await login({ email, password });
+      set({
+        name: user.name,
+        email: user.email,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   },
 }));

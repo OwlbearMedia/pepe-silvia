@@ -16,8 +16,6 @@ services:
       - nextjs
 
   flask:
-    build: .
-      # context: pepe-silvia
     image: 640550388417.dkr.ecr.us-west-2.amazonaws.com/pepe-silvia-api-flask:latest
     restart: always
     # flask requires SIGINT to stop gracefully
@@ -33,9 +31,7 @@ services:
        target: /pepe-silvia/.aws
 
   nextjs:
-    build:
-      context: .
-    # image: 640550388417.dkr.ecr.us-west-2.amazonaws.com/pepe-silvia-nextjs:latest
+    image: 640550388417.dkr.ecr.us-west-2.amazonaws.com/pepe-silvia-nextjs:latest
     restart: always
     ports:
       - 3000:3000
