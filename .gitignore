@@ -398,3 +398,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+.aws
+nginx/certs
+scripts/.env
+.DS_Store
